@@ -6,6 +6,13 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ClimberCommand;
+import frc.robot.commands.ClimberReverseCommand;
+import frc.robot.commands.PUOBCommand;
+import frc.robot.commands.PUOBReverseCommand;
+import frc.robot.commands.PistonCommand;
+import frc.robot.commands.ShootCommand;
+import frc.robot.commands.ToggleDriveModeCommand;
 import frc.robot.subsystems.AccelerometerSubsystem;
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
@@ -13,6 +20,9 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.subsystems.PUOBSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -24,8 +34,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
-  private static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
+  public static final SolenoidSubsystem solenoid = new SolenoidSubsystem();
+  public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
   public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
   public static GyroSubsystem gyroSubsystem = new GyroSubsystem();
@@ -34,8 +44,6 @@ public class RobotContainer {
   public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
   public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
   public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  
-
 
   public static XboxController driverController;
   public static XboxController operatorController;
@@ -59,6 +67,16 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    backButtonDriver.whenPressed(new ToggleDriveModeCommand());
+    rightBumperDriver.whenPressed(new PistonCommand());
+
+    aButtonDriver.whenPressed(new ClimberCommand());
+    bButtonDriver.whenPressed(new ClimberReverseCommand());
+    aButtonOperator.whenPressed(new ShootCommand());
+
+    bButtonOperator.whenPressed(new PUOBCommand());
+    backButtonOperator.whenPressed(new PUOBReverseCommand());
   }
 
   /**
@@ -68,8 +86,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    driverController = new XboxController(RobotMap.driverControllerId);
-    operatorController = new XboxController(RobotMap.operatorControllerId);
+    driverController = new XboxController(Constants.driverControllerId);
+    operatorController = new XboxController(Constants.operatorControllerId);
 
     // name buttons to include which controller
     backButtonDriver = new JoystickButton(driverController, 7);
@@ -97,6 +115,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return null;
   }
 }

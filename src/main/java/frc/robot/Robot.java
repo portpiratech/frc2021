@@ -4,9 +4,17 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.AccelerometerCommand;
+import frc.robot.commands.CameraCommand;
+import frc.robot.commands.ColorSensorCommand;
+import frc.robot.commands.DriveCommand;
+import frc.robot.commands.GyroCommand;
+import frc.robot.commands.TurretCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -28,6 +36,19 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    UsbCamera cam;
+    cam = CameraServer.getInstance().startAutomaticCapture();
+    cam.setResolution(240, 220);
+    cam.setFPS(25);
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.colorSensorSubsystem, new ColorSensorCommand());
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.driveTrainSubsystem, new DriveCommand());
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.cameraSubsystem, new CameraCommand());
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.gyroSubsystem, new GyroCommand());
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.accelerometerSubsystem, new AccelerometerCommand());
+    // CommandScheduler.getInstance().setDefaultCommand(driveTrainSubsystem, new TheCrmounch());
+    CommandScheduler.getInstance().setDefaultCommand(RobotContainer.turretSubsystem, new TurretCommand());
+    // CommandScheduler.getInstance().setDefaultCommand(shooterSubsystem, new ShooterDefaultCommand());
+    // CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
