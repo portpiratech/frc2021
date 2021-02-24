@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,18 +20,13 @@ import frc.robot.Constants;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
-  private double deadband = 0.05;
   private boolean arcade = false;
-  private TalonSRX leftMotor;
-  private TalonSRX rightMotor;
   private CANSparkMax leftMotor2;
   private CANSparkMax rightMotor2;
   private CANSparkMax leftMotor1;
   private CANSparkMax rightMotor1;
 
   public DriveTrainSubsystem() {
-    leftMotor = new TalonSRX(Constants.leftMotorID);
-    rightMotor = new TalonSRX(Constants.rightMotorID);
     leftMotor1 = new CANSparkMax(Constants.leftSparkMaxID1, MotorType.kBrushless);
     rightMotor1 = new CANSparkMax(Constants.rightSparkMaxID1, MotorType.kBrushless);
     leftMotor2 = new CANSparkMax(Constants.leftSparkMaxID2, MotorType.kBrushless);
@@ -68,15 +61,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
       leftSpeed = (leftY * Constants.driveSpeedMultiplier);
       rightSpeed = (rightY * Constants.driveSpeedMultiplier);
     }
-    if (Math.abs(leftSpeed) <= deadband) {
+    if (Math.abs(leftSpeed) <= Constants.deadband) {
       leftSpeed = 0;
     }
-    if (Math.abs(rightSpeed) <= deadband) {
+    if (Math.abs(rightSpeed) <= Constants.deadband) {
       rightSpeed = 0;
     }
-    // leftMotor.setInverted(true);
-    leftMotor.set(ControlMode.PercentOutput, leftSpeed);
-    rightMotor.set(ControlMode.PercentOutput, rightSpeed);
     // press right bumper for halfspeed
     leftMotor1.set(-leftSpeed);
     leftMotor2.set(-leftSpeed);
