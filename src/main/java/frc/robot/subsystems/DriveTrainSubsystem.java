@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.OI;
-import frc.robot.RobotMap;
+import frc.robot.RobotContainer;
+import frc.robot.Constants;
 
 /**
  * Add your docs here.
@@ -32,12 +32,12 @@ public class DriveTrainSubsystem extends SubsystemBase {
   private CANSparkMax rightMotor1;
 
   public DriveTrainSubsystem() {
-    leftMotor = new TalonSRX(RobotMap.leftMotorID);
-    rightMotor = new TalonSRX(RobotMap.rightMotorID);
-    leftMotor1 = new CANSparkMax(RobotMap.leftSparkMaxID1, MotorType.kBrushless);
-    rightMotor1 = new CANSparkMax(RobotMap.rightSparkMaxID1, MotorType.kBrushless);
-    leftMotor2 = new CANSparkMax(RobotMap.leftSparkMaxID2, MotorType.kBrushless);
-    rightMotor2 = new CANSparkMax(RobotMap.rightSparkMaxID2, MotorType.kBrushless);
+    leftMotor = new TalonSRX(Constants.leftMotorID);
+    rightMotor = new TalonSRX(Constants.rightMotorID);
+    leftMotor1 = new CANSparkMax(Constants.leftSparkMaxID1, MotorType.kBrushless);
+    rightMotor1 = new CANSparkMax(Constants.rightSparkMaxID1, MotorType.kBrushless);
+    leftMotor2 = new CANSparkMax(Constants.leftSparkMaxID2, MotorType.kBrushless);
+    rightMotor2 = new CANSparkMax(Constants.rightSparkMaxID2, MotorType.kBrushless);
   }
 
   /*
@@ -52,21 +52,21 @@ public class DriveTrainSubsystem extends SubsystemBase {
     if (arcade)// Robot.driveMode == Robot.DriveMode.ArcadeDrive)
     {
       // arcade drive
-      double turnValue = OI.driverController.getX(Hand.kLeft);
-      double throttleValue = OI.driverController.getY(Hand.kLeft);
+      double turnValue = RobotContainer.driverController.getX(Hand.kLeft);
+      double throttleValue = RobotContainer.driverController.getY(Hand.kLeft);
 
-      leftSpeed = ((turnValue - throttleValue) * RobotMap.driveSpeedMultiplier);
-      rightSpeed = ((turnValue + throttleValue) * RobotMap.driveSpeedMultiplier);
+      leftSpeed = ((turnValue - throttleValue) * Constants.driveSpeedMultiplier);
+      rightSpeed = ((turnValue + throttleValue) * Constants.driveSpeedMultiplier);
     } else {
       // tank drive
-      double leftY = -OI.driverController.getY(Hand.kLeft);
-      double rightY = OI.driverController.getY(Hand.kRight);
+      double leftY = -RobotContainer.driverController.getY(Hand.kLeft);
+      double rightY = RobotContainer.driverController.getY(Hand.kRight);
       /*
-       * if(leftY - rightY <= RobotMap.throttleTolerance || rightY - leftY <=
-       * RobotMap.throttleTolerance){ leftY = rightY; }
+       * if(leftY - rightY <= Constants.throttleTolerance || rightY - leftY <=
+       * Constants.throttleTolerance){ leftY = rightY; }
        */
-      leftSpeed = (leftY * RobotMap.driveSpeedMultiplier);
-      rightSpeed = (rightY * RobotMap.driveSpeedMultiplier);
+      leftSpeed = (leftY * Constants.driveSpeedMultiplier);
+      rightSpeed = (rightY * Constants.driveSpeedMultiplier);
     }
     if (Math.abs(leftSpeed) <= deadband) {
       leftSpeed = 0;

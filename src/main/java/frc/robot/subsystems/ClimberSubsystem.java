@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 // import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class ClimberSubsystem extends SubsystemBase {
   /**
@@ -23,8 +23,8 @@ public class ClimberSubsystem extends SubsystemBase {
 
   // private CANSparkMax motor;
   public ClimberSubsystem() {
-    // motor = new CANSparkMax(RobotMap.climbMotorID, MotorType.kBrushless);
-    motor = new TalonSRX(RobotMap.climbMotorID);
+    // motor = new CANSparkMax(Constants.climbMotorID, MotorType.kBrushless);
+    motor = new TalonSRX(Constants.climbMotorID);
   }
   // Motor spins at the givin speed.
   public void turn(double speed) {

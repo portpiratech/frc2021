@@ -16,7 +16,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 // import frc.robot.Robot;
-// import frc.robot.RobotMap;
+// import frc.robot.Constants;
 
 /**
  * Add your docs here.
@@ -97,7 +97,7 @@ public class CameraSubsystem extends SubsystemBase {
     // Returns the target angle based on distance equations.
     // public double getTargetAngle() {
     //     double d = getDistance();
-    //     double v = RobotMap.velocity;
+    //     double v = Constants.velocity;
     //     double h = targetHeight - cameraHeight;
     //     double w = (-9.8 * Math.pow(d, 2)) / Math.pow(v, 2);
     //     double ans = Math.atan((-d + Math.sqrt(Math.pow(d, 2) + 2 * w * h - Math.pow(w, 2))) / w);

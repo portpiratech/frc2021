@@ -14,7 +14,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
   /**
@@ -28,16 +28,16 @@ public class ShooterSubsystem extends SubsystemBase {
   private boolean isMotorOn;
 
   public ShooterSubsystem() {
-    leftMotor = new CANSparkMax(RobotMap.SPIFFYLeftMotorID, MotorType.kBrushless);
+    leftMotor = new CANSparkMax(Constants.SPIFFYLeftMotorID, MotorType.kBrushless);
     leftMotorPIDController = leftMotor.getPIDController();
-    rightMotor = new CANSparkMax(RobotMap.SPIFFYRightMotorID, MotorType.kBrushless);
+    rightMotor = new CANSparkMax(Constants.SPIFFYRightMotorID, MotorType.kBrushless);
     rightMotorPIDController = rightMotor.getPIDController();
     stopMotor();
   }
   
   public void startMotor() {
-    leftMotorPIDController.setReference(RobotMap.rpm, ControlType.kVelocity);
-    rightMotorPIDController.setReference(-RobotMap.rpm, ControlType.kVelocity);
+    leftMotorPIDController.setReference(Constants.rpm, ControlType.kVelocity);
+    rightMotorPIDController.setReference(-Constants.rpm, ControlType.kVelocity);
     isMotorOn = true;
   }
   

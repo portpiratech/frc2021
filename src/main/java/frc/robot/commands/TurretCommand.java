@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class TurretCommand extends CommandBase {
   /**
@@ -20,7 +20,7 @@ public class TurretCommand extends CommandBase {
 
   public TurretCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.turretSubsystem);
+    addRequirements(RobotContainer.turretSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -34,30 +34,30 @@ public class TurretCommand extends CommandBase {
     // At the start the shooter move down to reset the encoder
     // Is the robot can see the target it will turn to face it and will aim
     // vertically, so the ball will make it into the goal.
-    if (Robot.cameraSubsystem.hasTarget()) {
+    if (RobotContainer.cameraSubsystem.hasTarget()) {
       // X movement
-      double turnSpeedX = Robot.cameraSubsystem.getXAngle() * gainX;
+      double turnSpeedX = RobotContainer.cameraSubsystem.getXAngle() * gainX;
       if (turnSpeedX > maxSpeedX) {
         turnSpeedX = maxSpeedX;
       }
       if (turnSpeedX < -maxSpeedX) {
         turnSpeedX = -maxSpeedX;
       }
-      if (turnSpeedX > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0) {
-        Robot.turretSubsystem.setXMotor(0);
-      } else if (turnSpeedX < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0) {
-        Robot.turretSubsystem.setXMotor(0);
+      if (turnSpeedX > 0 && RobotContainer.turretSubsystem.getForwardLimitSwitchX() == 0) {
+        RobotContainer.turretSubsystem.setXMotor(0);
+      } else if (turnSpeedX < 0 && RobotContainer.turretSubsystem.getReverseLimitSwitchX() == 0) {
+        RobotContainer.turretSubsystem.setXMotor(0);
       } else {
-        Robot.turretSubsystem.setXMotor(turnSpeedX);
+        RobotContainer.turretSubsystem.setXMotor(turnSpeedX);
       }
     } else {
       // If there isn't a target the robot will search for it.
-      Robot.turretSubsystem.setXMotor(defaultXSpeed);
+      RobotContainer.turretSubsystem.setXMotor(defaultXSpeed);
     }
-    if (defaultXSpeed > 0 && Robot.turretSubsystem.getForwardLimitSwitchX() == 0) {
+    if (defaultXSpeed > 0 && RobotContainer.turretSubsystem.getForwardLimitSwitchX() == 0) {
       defaultXSpeed = -defaultXSpeed;
     }
-    if (defaultXSpeed < 0 && Robot.turretSubsystem.getReverseLimitSwitchX() == 0) {
+    if (defaultXSpeed < 0 && RobotContainer.turretSubsystem.getReverseLimitSwitchX() == 0) {
       defaultXSpeed = -defaultXSpeed;
     }
   }

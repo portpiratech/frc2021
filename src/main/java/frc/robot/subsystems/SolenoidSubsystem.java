@@ -1,6 +1,6 @@
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -17,10 +17,10 @@ public class SolenoidSubsystem extends SubsystemBase {
 
 	public SolenoidSubsystem() {
 		super();
-		leftSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1Left,
-				RobotMap.shifterSolenoidPort2Left);
-		rightSolenoid = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.shifterSolenoidPort1Right,
-				RobotMap.shifterSolenoidPort2Right);
+		leftSolenoid = new DoubleSolenoid(Constants.PCM_ID, Constants.shifterSolenoidPort1Left,
+				Constants.shifterSolenoidPort2Left);
+		rightSolenoid = new DoubleSolenoid(Constants.PCM_ID, Constants.shifterSolenoidPort1Right,
+				Constants.shifterSolenoidPort2Right);
 	}
 
 	/*

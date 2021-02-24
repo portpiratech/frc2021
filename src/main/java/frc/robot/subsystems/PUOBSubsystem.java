@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class PUOBSubsystem extends SubsystemBase {
   /**
@@ -22,7 +22,7 @@ public class PUOBSubsystem extends SubsystemBase {
   private boolean motorOn = false;
 // Picker Upper Of Balls
   public PUOBSubsystem() {
-    motor = new TalonSRX(RobotMap.PUOBMotorID);
+    motor = new TalonSRX(Constants.PUOBMotorID);
   }
   // Turns the motor on.
   public void motorOn() {
