@@ -5,6 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -15,7 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.Constants;
 
 public class TurretSubsystem extends SubsystemBase {
   /**
@@ -24,11 +25,11 @@ public class TurretSubsystem extends SubsystemBase {
   private TalonSRX xMotor;
 
   public TurretSubsystem() {
-    xMotor = new TalonSRX(RobotMap.turretXMotorID);
+    xMotor = new TalonSRX(Constants.turretXMotorID);
     xMotor.configForwardLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.Disabled,
-        RobotMap.turretXMotorID, 10);
+        Constants.turretXMotorID, 10);
     xMotor.configReverseLimitSwitchSource(RemoteLimitSwitchSource.Deactivated, LimitSwitchNormal.Disabled,
-        RobotMap.turretXMotorID, 10);
+        Constants.turretXMotorID, 10);
     xMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     xMotor.getSensorCollection().setQuadraturePosition(0, 10);
   }
