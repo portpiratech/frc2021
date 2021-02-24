@@ -8,8 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class PUOBCommand extends CommandBase {
   /**
@@ -17,14 +16,14 @@ public class PUOBCommand extends CommandBase {
    */
 
   public PUOBCommand() {
-    addRequirements(Robot.PUOBSubsystem);
+    addRequirements(RobotContainer.PUOBSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.PUOBSubsystem.motorOn();
+    RobotContainer.PUOBSubsystem.motorOn();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -35,12 +34,12 @@ public class PUOBCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.PUOBSubsystem.motorOff();
+    RobotContainer.PUOBSubsystem.motorOff();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !OI.bButtonOperator.get();
+    return !RobotContainer.bButtonOperator.get();
   }
 }

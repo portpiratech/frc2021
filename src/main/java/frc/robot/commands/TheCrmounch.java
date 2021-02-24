@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class TheCrmounch extends CommandBase {
   /**
@@ -22,7 +22,7 @@ public class TheCrmounch extends CommandBase {
 
   public TheCrmounch() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.driveTrainSubsystem);
+    addRequirements(RobotContainer.driveTrainSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -34,8 +34,8 @@ public class TheCrmounch extends CommandBase {
   @Override
   public void execute() {
     // makes robot move to a certain distance from the target
-    if (Robot.cameraSubsystem.hasTarget()) {
-      double turnSpeed = Robot.cameraSubsystem.getXAngle() * gainX;
+    if (RobotContainer.cameraSubsystem.hasTarget()) {
+      double turnSpeed = RobotContainer.cameraSubsystem.getXAngle() * gainX;
       if (turnSpeed > maxSpeedturn) {
         turnSpeed = maxSpeedturn;
       }
@@ -44,7 +44,7 @@ public class TheCrmounch extends CommandBase {
       }
       double left = -turnSpeed;
       double right = turnSpeed;
-      double distance = Robot.cameraSubsystem.getDistance();
+      double distance = RobotContainer.cameraSubsystem.getDistance();
       double distanceSpeed = (distance - minDistance) * gainDist;
       if (distanceSpeed > maxSpeedDist) {
         distanceSpeed = maxSpeedDist;
@@ -54,9 +54,9 @@ public class TheCrmounch extends CommandBase {
       }
       left += distanceSpeed;
       right += distanceSpeed;
-      Robot.driveTrainSubsystem.set(left, right);
+      RobotContainer.driveTrainSubsystem.set(left, right);
     } else {
-      Robot.driveTrainSubsystem.set(-0.01, -0.01);
+      RobotContainer.driveTrainSubsystem.set(-0.01, -0.01);
     }
   }
 

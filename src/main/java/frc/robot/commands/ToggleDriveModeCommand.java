@@ -8,13 +8,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ToggleDriveModeCommand extends CommandBase {
 
   public ToggleDriveModeCommand() {
     // Use requires() here to declare subsystem dependencies
-    addRequirements(Robot.driveTrainSubsystem);
+    addRequirements(RobotContainer.driveTrainSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class ToggleDriveModeCommand extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   public void execute() {
     // Toggles between tank and arcade drive.
-    Robot.driveTrainSubsystem.toggleDriveMode();
+    RobotContainer.driveTrainSubsystem.toggleDriveMode();
   }
 
   // Make this return true when this Command no longer needs to run execute()

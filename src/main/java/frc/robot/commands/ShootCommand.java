@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ShootCommand extends CommandBase {
   /**
@@ -27,14 +27,14 @@ public class ShootCommand extends CommandBase {
   @Override
   public void execute() {
     double h = 2.5;
-    double d = Robot.cameraSubsystem.getDistance();
+    double d = RobotContainer.cameraSubsystem.getDistance();
     double a = Math.PI/4;
     double v = (d / Math.cos(a)) * Math.sqrt(4.9 / ((d * Math.tan(a)) - h));
     // turns the motor for shooting balls on and off
-    if (Robot.shooterSubsystem.isMotorOn()) {
-      Robot.shooterSubsystem.stopMotor();
+    if (RobotContainer.shooterSubsystem.isMotorOn()) {
+      RobotContainer.shooterSubsystem.stopMotor();
     } else {
-      Robot.shooterSubsystem.startMotor();
+      RobotContainer.shooterSubsystem.startMotor();
     }
   }
 

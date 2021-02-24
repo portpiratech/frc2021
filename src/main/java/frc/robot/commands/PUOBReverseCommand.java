@@ -8,8 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class PUOBReverseCommand extends CommandBase {
   /**
@@ -23,7 +22,7 @@ public class PUOBReverseCommand extends CommandBase {
   @Override
   public void initialize() {
     // Reverses the PUOB while back is held down
-    Robot.PUOBSubsystem.motorReverse();
+    RobotContainer.PUOBSubsystem.motorReverse();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,12 +33,12 @@ public class PUOBReverseCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.PUOBSubsystem.motorOff();
+    RobotContainer.PUOBSubsystem.motorOff();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !OI.backButtonOperator.get();
+    return !RobotContainer.backButtonOperator.get();
   }
 }

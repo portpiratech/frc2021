@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ShooterDefaultCommand extends CommandBase {
   /**
@@ -17,7 +17,7 @@ public class ShooterDefaultCommand extends CommandBase {
    */
   
   public ShooterDefaultCommand() {
-    addRequirements(Robot.shooterSubsystem);
+    addRequirements(RobotContainer.shooterSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -31,8 +31,8 @@ public class ShooterDefaultCommand extends CommandBase {
   @Override
   public void execute() {
     double rpm = SmartDashboard.getNumber("rpm", 0);
-    Robot.shooterSubsystem.setRPM(rpm);
-    Robot.shooterSubsystem.getMotorRPM();
+    RobotContainer.shooterSubsystem.setRPM(rpm);
+    RobotContainer.shooterSubsystem.getMotorRPM();
   }
 
   // Called once the command ends or is interrupted.
