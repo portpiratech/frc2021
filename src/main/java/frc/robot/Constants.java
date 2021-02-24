@@ -42,7 +42,7 @@ public final class Constants {
   public static int turretXMotorID = 10;
   public static int turretYMotorID = 101;
 
-  public static int PUOBMotorID = 9;
+  public static int PUOBMotorID = 2;
 
   public static int climbMotorID = 11;
 
