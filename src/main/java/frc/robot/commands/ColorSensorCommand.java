@@ -8,11 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ColorSensorCommand extends CommandBase {
   public ColorSensorCommand() {
-    addRequirements(Robot.colorSensorSubsystem);
+    addRequirements(RobotContainer.colorSensorSubsystem);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,7 +26,7 @@ public class ColorSensorCommand extends CommandBase {
   @Override
   public void execute() {
     // reads colors from the color sensor
-    Robot.colorSensorSubsystem.getColors();
+    RobotContainer.colorSensorSubsystem.getColors();
   }
 
   // Make this return true when this Command no longer needs to run execute()

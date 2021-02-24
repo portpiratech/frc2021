@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class GyroCommand extends CommandBase {
   /**
@@ -16,7 +16,7 @@ public class GyroCommand extends CommandBase {
    */
   public GyroCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.gyroSubsystem);
+    addRequirements(RobotContainer.gyroSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -28,7 +28,7 @@ public class GyroCommand extends CommandBase {
   @Override
   public void execute() {
     // Reads the gyro on roborio
-    Robot.gyroSubsystem.readGyro();
+    RobotContainer.gyroSubsystem.readGyro();
   }
 
   // Called once the command ends or is interrupted.

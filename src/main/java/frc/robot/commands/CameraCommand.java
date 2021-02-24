@@ -9,12 +9,11 @@ package frc.robot.commands;
 
 // import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-// import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class CameraCommand extends CommandBase {
   public CameraCommand() {
-    addRequirements(Robot.cameraSubsystem);
+    addRequirements(RobotContainer.cameraSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -26,9 +25,9 @@ public class CameraCommand extends CommandBase {
   @Override
   public void execute() {
     // outputs values obtained from the camera
-    Robot.cameraSubsystem.outputToSmartDashboard();
+    RobotContainer.cameraSubsystem.outputToSmartDashboard();
     // outputs distance calculation
-    Robot.cameraSubsystem.getDistance();
+    RobotContainer.cameraSubsystem.getDistance();
     // outputs angle calculation
     // Robot.cameraSubsystem.getTargetAngle();
     // played with making the controller rumble

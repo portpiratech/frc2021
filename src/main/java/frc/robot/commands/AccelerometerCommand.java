@@ -7,7 +7,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class AccelerometerCommand extends CommandBase {
   /**
@@ -15,7 +15,7 @@ public class AccelerometerCommand extends CommandBase {
    */
   public AccelerometerCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.accelerometerSubsystem);
+    addRequirements(RobotContainer.accelerometerSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +27,7 @@ public class AccelerometerCommand extends CommandBase {
   @Override
   public void execute() {
     // Reads accelerometer
-    Robot.accelerometerSubsystem.readAccelerometer();
+    RobotContainer.accelerometerSubsystem.readAccelerometer();
   }
 
   // Called once the command ends or is interrupted.

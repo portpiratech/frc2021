@@ -8,8 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ClimberReverseCommand extends CommandBase {
   /**
@@ -25,7 +24,7 @@ public class ClimberReverseCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.climberSubsystem.turn(speed);
+    RobotContainer.climberSubsystem.turn(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -36,12 +35,12 @@ public class ClimberReverseCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.climberSubsystem.turn(0);
+    RobotContainer.climberSubsystem.turn(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !OI.bButtonDriver.get();
+    return !RobotContainer.bButtonDriver.get();
   }
 }

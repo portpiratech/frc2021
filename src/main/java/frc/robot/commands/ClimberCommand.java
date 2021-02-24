@@ -8,8 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.OI;
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 public class ClimberCommand extends CommandBase {
   /**
@@ -18,14 +17,14 @@ public class ClimberCommand extends CommandBase {
   private double speed = 1;
 
   public ClimberCommand() {
-    addRequirements(Robot.climberSubsystem);
+    addRequirements(RobotContainer.climberSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.climberSubsystem.turn(speed);
+    RobotContainer.climberSubsystem.turn(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -36,12 +35,12 @@ public class ClimberCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.climberSubsystem.turn(0);
+    RobotContainer.climberSubsystem.turn(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !OI.aButtonDriver.get();
+    return !RobotContainer.aButtonDriver.get();
   }
 }

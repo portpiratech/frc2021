@@ -8,8 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Robot;
 //import edu.wpi.first.wpilibj.Timer;
+import frc.robot.RobotContainer;
 
 public class PistonCommand extends CommandBase {
   /**
@@ -32,10 +32,10 @@ public class PistonCommand extends CommandBase {
   public void execute() {
     // Extends and retracts piston for shifting gears
     if (extended) {
-      Robot.solenoid.retractLauncher();
+      RobotContainer.solenoid.retractLauncher();
       // Timer.delay(0.5);
     } else {
-      Robot.solenoid.extendLauncher();
+      RobotContainer.solenoid.extendLauncher();
       // Timer.delay(1.0);
     }
     extended = !extended;
