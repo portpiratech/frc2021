@@ -30,6 +30,4 @@ public final class Constants {
   public static int shifterSolenoidPort2Right = 3; // DoubleSolenoid
 
   public static int PUOBMotorID = 2;
-
-  public static int climbMotorID = 11;
 }
