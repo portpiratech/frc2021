@@ -40,6 +40,6 @@ public class PUOBCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !RobotContainer.bButtonOperator.get();
+    return !RobotContainer.bButtonDriver.get();
   }
 }

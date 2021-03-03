@@ -18,7 +18,7 @@ public class PUOBSubsystem extends SubsystemBase {
    * Creates a new PUOBSubsystem.
    */
   private TalonSRX motor;
-  private double speed = 0.3;
+  private double speed = 1;
   private boolean motorOn = false;
 // Picker Upper Of Balls
   public PUOBSubsystem() {
