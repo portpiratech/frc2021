@@ -32,11 +32,6 @@ public class DriveTrainSubsystem extends SubsystemBase {
     rightMotor2 = new CANSparkMax(Constants.rightSparkMaxID2, MotorType.kBrushless);
   }
 
-  /*
-   * //@Override public void initDefaultCommand() { // Set the default command for
-   * a subsystem here. // setDefaultCommand(new MySpecialCommand());
-   * setDefaultCommand(new DriveCommand()); }
-   */
   // Moves drivebase.
   public void drive() {
     double leftSpeed, rightSpeed;

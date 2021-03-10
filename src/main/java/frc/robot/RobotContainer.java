@@ -12,6 +12,7 @@ import frc.robot.commands.PistonCommand;
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.SolenoidSubsystem;
+import frc.robot.subsystems.TurretSubsystem;
 import frc.robot.subsystems.PUOBSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -29,6 +30,7 @@ public class RobotContainer {
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   public static CameraSubsystem cameraSubsystem = new CameraSubsystem();
   public static PUOBSubsystem PUOBSubsystem = new PUOBSubsystem();
+  public static TurretSubsystem turretSubsystem = new TurretSubsystem();
 
   public static XboxController driverController;
   public static XboxController operatorController;
