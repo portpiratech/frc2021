@@ -21,7 +21,11 @@ public class TurretCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.turretSubsystem.manualAimX();
+    if(RobotContainer.turretSubsystem.isManual()){
+      RobotContainer.turretSubsystem.manualAimX();
+    }else{
+      RobotContainer.turretSubsystem.autoAimX();
+    }
     RobotContainer.turretSubsystem.manualAimY();
   }
 

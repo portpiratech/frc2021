@@ -18,6 +18,8 @@ public class TurretSubsystem extends SubsystemBase {
   public TalonSRX yMotor;
   public double multiplier = 0.3;
   public boolean manual = true;
+  public double maxSpeedX = 0.2;
+  public double gainX = 0.15;
   public TurretSubsystem() {
     xMotor = new TalonSRX(Constants.turretXID);
     yMotor = new TalonSRX(Constants.turretXID);
@@ -31,19 +33,32 @@ public class TurretSubsystem extends SubsystemBase {
     manual = !manual;
   }
 
-  public void autoAim(){
-    
+  public void autoAimX(){
+    double turnSpeedX;
+    if (RobotContainer.cameraSubsystem.hasTarget()) {
+      // X movement
+      turnSpeedX = RobotContainer.cameraSubsystem.getXAngle() * gainX;
+      if (turnSpeedX > maxSpeedX) {
+        turnSpeedX = maxSpeedX;
+      }
+      if (turnSpeedX < -maxSpeedX) {
+        turnSpeedX = -maxSpeedX;
+      }
+    }else{
+      turnSpeedX = 0;
+    }
+    setX(turnSpeedX);
   }
 
   public void manualAimX(){
     double xSpeed = RobotContainer.operatorController.getX(Hand.kLeft);
-    xSpeed *= multiplier;
+    xSpeed *= maxSpeedX;
     setX(xSpeed);
   }
 
   public void manualAimY(){
     double ySpeed = RobotContainer.operatorController.getY(Hand.kLeft);
-    ySpeed *= multiplier;
+    ySpeed *= maxSpeedX;
     setY(ySpeed);
   }
 
