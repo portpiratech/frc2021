@@ -7,8 +7,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 
-import frc.robot.commands.PUOBCommand;
-import frc.robot.commands.PUOBReverseCommand;
 import frc.robot.commands.PistonCommand;
 
 import frc.robot.subsystems.CameraSubsystem;
@@ -57,8 +55,8 @@ public class RobotContainer {
 
     rightBumperDriver.whenPressed(new PistonCommand());
 
-    bButtonOperator.whenPressed(new PUOBCommand());
-    backButtonOperator.whenPressed(new PUOBReverseCommand());
+    // bButtonDriver.whenPressed(new PUOBCommand());
+    // startButtonDriver.whenPressed(new PUOBReverseCommand());
   }
 
   /**
