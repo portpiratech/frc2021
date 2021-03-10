@@ -31,5 +31,6 @@ public final class Constants {
 
   public static int PUOBMotorID = 2;
 
-  public static int climbMotorID = 11;
+  public static int turretXID = 13;
+  public static int turretYID = 14;
 }
