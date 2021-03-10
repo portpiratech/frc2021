@@ -17,17 +17,33 @@ public class TurretSubsystem extends SubsystemBase {
   public TalonSRX xMotor;
   public TalonSRX yMotor;
   public double multiplier = 0.3;
+  public boolean manual = true;
   public TurretSubsystem() {
     xMotor = new TalonSRX(Constants.turretXID);
     yMotor = new TalonSRX(Constants.turretXID);
   }
 
-  public void mannualAim(){
+  public boolean isManual(){
+    return manual;
+  }
+
+  public void toggleManual(){
+    manual = !manual;
+  }
+
+  public void autoAim(){
+    
+  }
+
+  public void manualAimX(){
     double xSpeed = RobotContainer.operatorController.getX(Hand.kLeft);
-    double ySpeed = RobotContainer.operatorController.getY(Hand.kLeft);
     xSpeed *= multiplier;
-    ySpeed *= multiplier;
     setX(xSpeed);
+  }
+
+  public void manualAimY(){
+    double ySpeed = RobotContainer.operatorController.getY(Hand.kLeft);
+    ySpeed *= multiplier;
     setY(ySpeed);
   }
 
