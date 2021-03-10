@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.PUOBCommand;
 import frc.robot.commands.PUOBReverseCommand;
 import frc.robot.commands.PistonCommand;
-import frc.robot.commands.ToggleDriveModeCommand;
 
 import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
@@ -56,7 +55,6 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    backButtonDriver.whenPressed(new ToggleDriveModeCommand());
     rightBumperDriver.whenPressed(new PistonCommand());
 
     // bButtonDriver.whenPressed(new PUOBCommand());

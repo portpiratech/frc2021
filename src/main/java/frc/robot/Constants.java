@@ -16,7 +16,7 @@ public final class Constants {
   public static int driverControllerId = 0;
   public static int operatorControllerId = 1;
   
-  public static double driveSpeedMultiplier = 0.6;
+  public static double driveSpeedMultiplier = 0.5;
   public static double deadband = 0.1;
   public static int leftSparkMaxID1 = 5;
   public static int leftSparkMaxID2 = 6;

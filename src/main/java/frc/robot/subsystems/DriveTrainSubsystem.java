@@ -20,7 +20,6 @@ import frc.robot.Constants;
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends SubsystemBase {
-  private boolean arcade = false;
   private CANSparkMax leftMotor2;
   private CANSparkMax rightMotor2;
   private CANSparkMax leftMotor1;
@@ -41,48 +40,35 @@ public class DriveTrainSubsystem extends SubsystemBase {
   // Moves drivebase.
   public void drive() {
     double leftSpeed, rightSpeed;
+    // tank drive
+    double leftY = -RobotContainer.driverController.getY(Hand.kLeft);
+    double rightY = RobotContainer.driverController.getY(Hand.kRight);
+    leftSpeed = leftY;
+    rightSpeed = rightY;
 
-    if (arcade)// Robot.driveMode == Robot.DriveMode.ArcadeDrive)
-    {
-      // arcade drive
-      double turnValue = RobotContainer.driverController.getX(Hand.kLeft);
-      double throttleValue = RobotContainer.driverController.getY(Hand.kLeft);
-
-      leftSpeed = ((turnValue - throttleValue) * Constants.driveSpeedMultiplier);
-      rightSpeed = ((turnValue + throttleValue) * Constants.driveSpeedMultiplier);
-    } else {
-      // tank drive
-      double leftY = -RobotContainer.driverController.getY(Hand.kLeft);
-      double rightY = RobotContainer.driverController.getY(Hand.kRight);
-      /*
-       * if(leftY - rightY <= Constants.throttleTolerance || rightY - leftY <=
-       * Constants.throttleTolerance){ leftY = rightY; }
-       */
-      leftSpeed = (leftY * Constants.driveSpeedMultiplier);
-      rightSpeed = (rightY * Constants.driveSpeedMultiplier);
-    }
     if (Math.abs(leftSpeed) <= Constants.deadband) {
       leftSpeed = 0;
     }
     if (Math.abs(rightSpeed) <= Constants.deadband) {
       rightSpeed = 0;
     }
+    leftSpeed *= Constants.driveSpeedMultiplier;
+    rightSpeed *= Constants.driveSpeedMultiplier;
+
+    if(RobotContainer.driverController.getBumper(Hand.kLeft))
+    {	
+      leftSpeed /= 2;
+      rightSpeed /= 2;
+    }
     // press right bumper for halfspeed
-    leftMotor1.set(-leftSpeed);
-    leftMotor2.set(-leftSpeed);
-    rightMotor1.set(-rightSpeed);
-    rightMotor2.set(-rightSpeed);
+    set(leftSpeed, rightSpeed);
     SmartDashboard.putNumber("Left speed", leftSpeed);
     SmartDashboard.putNumber("Right speed", rightSpeed);
   }
-  // Toggles the drive mode.
-  public void toggleDriveMode() {
-    arcade = !arcade;
-  }
   // Sets the speed of the drive base.
   public void set(double left, double right) {
-    leftMotor1.set(left);
-    leftMotor2.set(left);
+    leftMotor1.set(-left);
+    leftMotor2.set(-left);
     rightMotor1.set(-right);
     rightMotor2.set(-right);
   }
