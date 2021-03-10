@@ -16,12 +16,12 @@ public final class Constants {
   public static int driverControllerId = 0;
   public static int operatorControllerId = 1;
   
-  public static double driveSpeedMultiplier = 0.6;
-  public static double deadband = 0.05;
-  public static int leftSparkMaxID1 = 3;
-  public static int leftSparkMaxID2 = 4;
-  public static int rightSparkMaxID1 = 5;
-  public static int rightSparkMaxID2 = 6;
+  public static double driveSpeedMultiplier = 0.5;
+  public static double deadband = 0.1;
+  public static int leftSparkMaxID1 = 5;
+  public static int leftSparkMaxID2 = 6;
+  public static int rightSparkMaxID1 = 3;
+  public static int rightSparkMaxID2 = 4;
 
   public static final int PCM_ID = 1; // Compressor/Pneumatics Control Module (used for DoubleSolenoids)
   public static int shifterSolenoidPort1Left = 0; // DoubleSolenoid
