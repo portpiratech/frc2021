@@ -16,7 +16,7 @@ public class ShooterFeedCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shooterSubsystem.setFeedSpeed();
+    RobotContainer.shooterSubsystem.setFeedSpeed(0.4);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -25,11 +25,13 @@ public class ShooterFeedCommand extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    RobotContainer.shooterSubsystem.setFeedSpeed(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return !RobotContainer.aButtonOperator.get();
   }
 }

@@ -17,8 +17,6 @@ public class ShooterSubsystem extends SubsystemBase {
   private boolean isFireMotorOn = false;
 
   private TalonSRX feedMotor;
-  private double feedSpeed = 0.5;
-  private boolean isFeedMotorOn = false;
 
   public ShooterSubsystem() {
     fireMotor = new TalonSRX(Constants.fireMotorID);
@@ -34,12 +32,7 @@ public class ShooterSubsystem extends SubsystemBase {
     isFireMotorOn = !isFireMotorOn;
   }
 
-  public void setFeedSpeed(){
-    if(isFeedMotorOn){
-      feedMotor.set(ControlMode.PercentOutput, 0);
-    }else{
-      feedMotor.set(ControlMode.PercentOutput, feedSpeed);
-    }
-    isFeedMotorOn = !isFeedMotorOn;
+  public void setFeedSpeed(double speed){
+    feedMotor.set(ControlMode.PercentOutput, speed);
   }
 }
