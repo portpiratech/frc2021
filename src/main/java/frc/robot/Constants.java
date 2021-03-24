@@ -33,4 +33,7 @@ public final class Constants {
 
   public static int turretXID = 13;
   public static int turretYID = 14;
+
+  public static int fireMotorID = 420;
+  public static int feedMotorID = 400;
 }
