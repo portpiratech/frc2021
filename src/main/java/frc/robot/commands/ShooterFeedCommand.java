@@ -16,7 +16,7 @@ public class ShooterFeedCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shooterSubsystem.setFeedSpeed(0.4);
+    RobotContainer.shooterSubsystem.setFeedSpeed(-0.5);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
